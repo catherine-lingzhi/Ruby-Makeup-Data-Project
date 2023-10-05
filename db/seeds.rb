@@ -1,10 +1,10 @@
 require "net/http"
 require "json"
 
-Category.delete_all
-Brand.delete_all
-Product.delete_all
 ProductTag.delete_all
+Product.delete_all
+Brand.delete_all
+Category.delete_all
 Tag.delete_all
 
 # Fetch API to populate data to datbase
@@ -20,7 +20,7 @@ data.each do |product_data|
   if category && category.valid?
     product = category.products.create(
       name:        product_data["name"],
-      price:       product_data["price"],
+      price:       Faker::Commerce.price,
       image_link:  product_data["image_link"],
       description: product_data["description"],
       brand_id:    brand.id
@@ -28,7 +28,11 @@ data.each do |product_data|
 
     product_data["tag_list"].each do |tag_name|
       tag = Tag.find_or_create_by(name: tag_name)
-      ProductTag.create(product:, tag:)
+      if product
+        ProductTag.create(product_id: product.id, tag_id: tag.id)
+      else
+        puts "Product not found for tag: #{tag_name}"
+      end
     end
 
   else
