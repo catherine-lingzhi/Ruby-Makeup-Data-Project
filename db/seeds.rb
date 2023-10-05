@@ -3,9 +3,9 @@ require "json"
 
 Category.delete_all
 Brand.delete_all
-Tag.delete_all
 Product.delete_all
 ProductTag.delete_all
+Tag.delete_all
 
 # Fetch API to populate data to datbase
 url = "http://makeup-api.herokuapp.com/api/v1/products.json"
@@ -25,7 +25,19 @@ data.each do |product_data|
       description: product_data["description"],
       brand_id:    brand.id
     )
+
+    product_data["tag_list"].each do |tag_name|
+      tag = Tag.find_or_create_by(name: tag_name)
+      ProductTag.create(product:, tag:)
+    end
+
   else
     puts "Invalid category #{product_data['product_type']}"
   end
 end
+
+puts "Created #{Category.count} categories"
+puts "Created #{Brand.count} brands"
+puts "Created #{Product.count} products"
+puts "Created #{Tag.count} tags"
+puts "Created #{ProductTag.count} product tags"
