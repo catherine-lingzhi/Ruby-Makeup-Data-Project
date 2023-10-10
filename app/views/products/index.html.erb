@@ -5,9 +5,7 @@
     <% @products.each do |product| %>
       <div class="bg-white shadow-lg rounded-lg overflow-hidden">
         <% if product.image_link.present? %>
-          <%= image_tag product.image_link, alt: product.name, class: "w-full h-32 object-cover" %>
-        <% else %>
-          <div class="h-32 bg-gray-200"></div>
+          <%= image_tag product.image_link, alt: product.name, class: "w-full h-43 object-cover" %>
         <% end %>
 
         <div class="p-6">
