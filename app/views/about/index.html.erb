@@ -2,13 +2,16 @@
   <h1 class="text-2xl font-bold mb-4">About</h1>
 
   <div class="mb-6">
-    <h4 class="text-lg font-semibold">Data Source</h4>
+    <h4 class="text-lg font-semibold">Data Description</h4>
+    <p>
+      The main dataset we are making use of is the Makeup API,
+      <a href="http://makeup-api.herokuapp.com/" target="_blank" rel="noopener noreferrer" class="text-blue-500 underline hover:text-blue-700">Makeup API</a>.
+      The API is in JSON. The data is structured fairly straightforwardly, with each product having id, brand, name, price, price_sign, currency, image_link, product_link, website_link, description, rating, category, product_type, tag_list (which has an array of values), created_at, updated_at, product_api_url, api_featured_image, and product_colors (which also has an array of values which have a hex_value and a colour_name attribute).
+    </p>
   </div>
 
   <div>
     <h4 class="text-lg font-semibold">ERD</h4>
-    <img src="path/to/your-image.jpg" alt="ERD Image" class="mt-2">
+    <img src="<%= image_path('erd.png') %>" alt="ERD Image" class="mt-2 w-90 h-auto">
   </div>
 </div>
-
-
