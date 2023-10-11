@@ -1,13 +1,29 @@
-<div class="max-w-screen-xl mx-auto px-4">
-  <h1 class="text-2xl font-bold mb-4 text-center">Categories</h1>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <% @categories.each do |category| %>
-      <div class="p-6">
-        <%= link_to category_path(category) do %>
-          <%= category.name %>
+<div class="w-2/3 relative overflow-x-auto shadow-md sm:rounded-lg mx-auto">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-red-100 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Categories
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Products in Category
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @categories.each do |category| %>
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <%= link_to category_path(category) do %>
+                    <%= category.name %>
+                  <% end %>
+                </th>
+                <td class="px-6 py-4">
+                    <%= category.products.count %>
+                </td>
+            </tr>
         <% end %>
-      </div>
-    <% end %>
-  </div>
+        </tbody>
+    </table>
 </div>
+
