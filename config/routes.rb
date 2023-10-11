@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   root 'products#index'
   resources :products, only: %i[index show]
   resources :categories, only: %i[index show]
+  resources :tags, only: %i[index show]
 end
