@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'brands/index'
+  get 'brands/show'
   get 'about', to: 'about#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -8,4 +10,5 @@ Rails.application.routes.draw do
   resources :products, only: %i[index show]
   resources :categories, only: %i[index show]
   resources :tags, only: %i[index show]
+  resources :brands, only: %i[index show]
 end
