@@ -1,0 +1,29 @@
+<h1 class="text-2xl font-bold mb-4 text-center">Tags</h1>
+<div class="w-2/3 relative overflow-x-auto shadow-md sm:rounded-lg mx-auto">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-red-100 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Tags
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Products in Tag
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @tags.each do |tag| %>
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <%= link_to tag_path(tag) do %>
+                    <%= tag.name %>
+                  <% end %>
+                </th>
+                <td class="px-6 py-4">
+                    <%= tag.products.count %>
+                </td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>
