@@ -1,2 +1,29 @@
-<h1>Brands#show</h1>
-<p>Find me in app/views/brands/show.html.erb</p>
+<h1 class="text-2xl font-bold mb-4 text-center"><%= @brand.name %></h1>
+<div class="w-2/3 relative overflow-x-auto shadow-md sm:rounded-lg mx-auto">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-red-100 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Image
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Product Name
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @brand.products.each do |product| %>
+            <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <%= link_to product_path(product) do %>
+                    <%= image_tag product.image_link %>
+                  <% end %>
+                </th>
+                <td class="px-6 py-4">
+                    <%= product.name %>
+                </td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>
