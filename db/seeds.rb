@@ -31,12 +31,12 @@ data = JSON.parse(response)
 
 data.each do |product_data|
   category = Category.find_or_create_by(name: product_data["product_type"])
-  brand = Brand.find_or_create_by(name: product_data["brand"])
 
   if category && category.valid?
     image_link = product_data["image_link"]
 
     if valid_image_link?(image_link) && !description_has_html_tag?(product_data["description"])
+      brand = Brand.find_or_create_by(name: product_data["brand"])
       product = category.products.create(
         name:        product_data["name"],
         price:       Faker::Commerce.price,
