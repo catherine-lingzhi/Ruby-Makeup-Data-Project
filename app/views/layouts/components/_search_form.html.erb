@@ -1,0 +1,9 @@
+<%= form_with(url: search_products_path, method: :get, local: true) do |form| %>
+  <div class="flex items-center">
+    <%= form.text_field :keywords, class: "border p-2 rounded-l-lg", placeholder: 'Search for Products' %>
+    <%= form.submit "Search!", class: "bg-blue-500 text-white rounded-r-lg p-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300" %>
+  </div>
+<% end %>
+
+
+

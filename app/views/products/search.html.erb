@@ -1,0 +1,28 @@
+<div class="max-w-screen-xl mx-auto px-4">
+  <div class="text-center mt-8 mb-40">
+    <p class="text-2xl font-bold mb-4 text-center">Products found when searching for: <%= params[:keywords] %></p>
+    <p class="text-2xl font-bold mb-4 text-center">Results found: <%= @products.count %> products</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+      <% @products.each do |product| %>
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+          <% if product.image_link.present? %>
+          <%= link_to product_path(product) do %>
+            <%= image_tag product.image_link, alt: product.name, class: "w-full h-43 object-cover" %>
+            <% end %>
+          <% end %>
+
+          <div class="p-6">
+          <%= link_to product_path(product) do %>
+            <h3 class="text-xl font-bold mb-2"><%= product.name %></h3>
+          <% end %>
+            <p class="text-gray-700 mb-4">
+              <%= truncate(product.description, length: 100, separator: ' ') %>
+            </p>
+            <p class="text-green-500 font-bold mb-2">Price: $<%= product.price %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>
